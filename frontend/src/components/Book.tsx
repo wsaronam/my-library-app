@@ -3,7 +3,7 @@ import styles from '../styles/Book.module.css';
 
 
 interface BookProps {
-    id: string;
+    id: number;
     title: string;
     author: string;
     description: string;

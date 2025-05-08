@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import Book from "./components/Book";
+import AddBook from "./components/AddBook";
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
       </header>
 
       <main className="App-main">
-        <button>Add New Book</button>
+        <AddBook />
       </main>
     </div>
   );
