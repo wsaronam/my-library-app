@@ -15,7 +15,7 @@ const AddBook: React.FC = () => {
         const newBook = { id, title, author, description };
     
         try {
-            const response = await axios.post("http://localhost:8080/api/books", newBook);
+            const response = await axios.post("/api/books", newBook);
             console.log("book being saved:", response.data);
             setId(0);
             setTitle("");
