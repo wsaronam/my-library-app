@@ -1,5 +1,6 @@
 package com.library.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,11 +8,12 @@ import jakarta.persistence.GenerationType;
 
 
 
+@Entity
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String title;
     private String author;
@@ -21,7 +23,8 @@ public class Book {
     // Constructors
     public Book() {}
 
-    public Book(String title, String author, String description) {
+    public Book(Integer id, String title, String author, String description) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.description = description;
@@ -29,8 +32,8 @@ public class Book {
 
 
     // Gets and Sets
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Integer getId() { return id; }
+    //public void setId(Integer id) { this.id = id; }
 
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
