@@ -18,7 +18,6 @@ const AddBook: React.FC = () => {
     
         try {
             const response = await axios.post("/api/books", newBook);
-            console.log("book being saved:", response.data);
             setTitle("");
             setAuthor("");
             setDescription("");
@@ -34,7 +33,7 @@ const AddBook: React.FC = () => {
             <form onSubmit={handleSubmit}>
                 <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" required />
                 <input value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Author" required />
-                <input value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" required />
+                <input value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
                 <button type="submit">Add Book</button>
             </form>
         </div>
