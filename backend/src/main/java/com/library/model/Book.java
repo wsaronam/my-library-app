@@ -13,7 +13,7 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String title;
     private String author;
@@ -23,7 +23,7 @@ public class Book {
     // Constructors
     public Book() {}
 
-    public Book(Integer id, String title, String author, String description) {
+    public Book(Long id, String title, String author, String description) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -32,7 +32,7 @@ public class Book {
 
 
     // Gets and Sets
-    public Integer getId() { return id; }
+    public Long getId() { return id; }
     //public void setId(Integer id) { this.id = id; }
 
     public String getTitle() { return title; }
