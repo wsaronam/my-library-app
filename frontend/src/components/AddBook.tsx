@@ -2,10 +2,16 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 
+import { BookType } from "../types/Book";
 
 
 
-const AddBook: React.FC = () => {
+type AddBookProps = {
+    onBookAdded: (book: BookType) => void;
+};
+
+
+const AddBook: React.FC<AddBookProps> = ({onBookAdded}) => {
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [description, setDescription] = useState("");
@@ -18,6 +24,7 @@ const AddBook: React.FC = () => {
     
         try {
             const response = await axios.post("/api/books", newBook);
+            onBookAdded(response.data); // this will let App know book list has been updated
             setTitle("");
             setAuthor("");
             setDescription("");
