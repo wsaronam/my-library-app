@@ -6,7 +6,7 @@ import { BookType } from "../types/Book";
 
 
 
-type AddBookProps = {
+interface AddBookProps {
     onBookAdded: (book: BookType) => void;
 };
 
@@ -24,7 +24,7 @@ const AddBook: React.FC<AddBookProps> = ({onBookAdded}) => {
     
         try {
             const response = await axios.post("/api/books", newBook);
-            onBookAdded(response.data); // this will let App know book list has been updated
+            onBookAdded(response.data);
             setTitle("");
             setAuthor("");
             setDescription("");

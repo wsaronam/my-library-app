@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import axios from "axios";
-
 import { BookType } from "./types/Book";
 import AddBook from "./components/AddBook";
 import ViewBooks from "./components/ViewBooks";
@@ -13,19 +11,8 @@ function App() {
   const [books, setBooks] = useState<BookType[]>([]);
   const [showBooks, setShowBooks] = useState(false);
 
-  // use this to get books
-  const getBooks = async () => {
-    try {
-      const response = await axios.get("/api/books");
-      setBooks(response.data);
-    } 
-    catch (err) {
-      console.error("Failed to fetch books", err);
-    }
-  };
-
-  const handleBookAdded = async () => {
-    await getBooks();
+  const handleDeleteBook = (id: number) => {
+    setBooks(prevBooks => prevBooks.filter(book => book.id !== id));
   };
 
 
@@ -37,12 +24,12 @@ function App() {
       </header>
 
       <main className="App-main">
-        <AddBook onBookAdded={handleBookAdded} />
+        <AddBook onBookAdded={(book) => setBooks(prev => [...prev, book])} />
         <div>
           <button onClick={() => setShowBooks(prev => !prev)}>
             {showBooks ? "Hide Books" : "View Books"}
           </button>
-          {showBooks && <ViewBooks />}
+          {showBooks && <ViewBooks books={books} />}
         </div>
         
       </main>
