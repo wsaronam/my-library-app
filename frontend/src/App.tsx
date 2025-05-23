@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import axios from "axios";
+
+import Book from "./components/Book"
 import { BookType } from "./types/Book";
 import AddBook from "./components/AddBook";
 import ViewBooks from "./components/ViewBooks";
@@ -11,8 +14,15 @@ function App() {
   const [books, setBooks] = useState<BookType[]>([]);
   const [showBooks, setShowBooks] = useState(false);
 
-  const handleDeleteBook = (id: number) => {
-    setBooks(prevBooks => prevBooks.filter(book => book.id !== id));
+
+  const handleDeleteBook = async (id: number) => {
+    try {
+      await axios.delete(`/api/books/${id}`);
+      setBooks(prev => prev.filter(book => book.id !== id));
+    } 
+    catch (error) {
+      console.error("Error deleting book", error);
+    }
   };
 
 
@@ -29,7 +39,14 @@ function App() {
           <button onClick={() => setShowBooks(prev => !prev)}>
             {showBooks ? "Hide Books" : "View Books"}
           </button>
-          {showBooks && <ViewBooks books={books} />}
+          {/* {showBooks && <ViewBooks books={books} onDelete={handleDeleteBook} />} */}
+          {showBooks && (
+            <div>
+              {books.map(book => (
+                <Book key={book.id} book={book} onDelete={handleDeleteBook} />
+              ))}
+            </div>
+          )}
         </div>
         
       </main>
