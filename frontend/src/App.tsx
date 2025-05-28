@@ -15,6 +15,12 @@ function App() {
   const [showBooks, setShowBooks] = useState(false);
 
 
+  const handleBookUpdated = (updatedBook: BookType) => {
+    setBooks(prevBooks =>
+      prevBooks.map(book => (book.id === updatedBook.id ? updatedBook : book))
+    );
+  };
+
   const handleDeleteBook = async (id: number) => {
     try {
       await axios.delete(`/api/books/${id}`);
@@ -43,7 +49,12 @@ function App() {
           {showBooks && (
             <div>
               {books.map(book => (
-                <Book key={book.id} book={book} onDelete={handleDeleteBook} />
+                <Book 
+                  key={book.id} 
+                  book={book} 
+                  onBookUpdated={handleBookUpdated} 
+                  onDelete={handleDeleteBook} 
+                />
               ))}
             </div>
           )}
