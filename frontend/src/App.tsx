@@ -11,6 +11,8 @@ import ViewBooks from "./components/ViewBooks";
 
 
 function App() {
+  // we will use searchQuery to search for the book with title or author
+  const [searchQuery, setSearchQuery] = useState("");
   const [books, setBooks] = useState<BookType[]>([]);
   const [showBooks, setShowBooks] = useState(false);
 
@@ -45,7 +47,13 @@ function App() {
           <button onClick={() => setShowBooks(prev => !prev)}>
             {showBooks ? "Hide Books" : "View Books"}
           </button>
-          {/* {showBooks && <ViewBooks books={books} onDelete={handleDeleteBook} />} */}
+          {/* we need to tie in this input with a search that will show what we are searching for */}
+          <input
+            type="text"
+            placeholder="Search by title or author"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
           {showBooks && (
             <div>
               {books.map(book => (
