@@ -56,13 +56,18 @@ function App() {
           />
           {showBooks && (
             <div>
-              {books.map(book => (
-                <Book 
-                  key={book.id} 
-                  book={book} 
-                  onBookUpdated={handleBookUpdated} 
-                  onDelete={handleDeleteBook} 
-                />
+              {books
+                .filter((book) =>
+                  book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                  book.author.toLowerCase().includes(searchQuery.toLowerCase())
+                )
+                .map(book => (
+                  <Book 
+                    key={book.id} 
+                    book={book} 
+                    onBookUpdated={handleBookUpdated} 
+                    onDelete={handleDeleteBook} 
+                  />
               ))}
             </div>
           )}
