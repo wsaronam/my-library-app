@@ -17,6 +17,22 @@ function App() {
   const [showBooks, setShowBooks] = useState(false);
 
 
+  const handleSearch = async (searchQuery: string) => {
+    if (!searchQuery.trim()) {  // search query is empty
+      const res = await axios.get("/api/books");
+      setBooks(res.data);  // show all added books
+      return;
+    }
+    
+    try {
+      const response = await axios.get(`/api/books/search?query=${encodeURIComponent(searchQuery)}`);
+      setBooks(response.data);
+    } 
+    catch (error) {
+      console.error("Search failed:", error);
+    }
+  };
+
   const handleBookUpdated = (updatedBook: BookType) => {
     setBooks(prevBooks =>
       prevBooks.map(book => (book.id === updatedBook.id ? updatedBook : book))
@@ -47,21 +63,18 @@ function App() {
           <button onClick={() => setShowBooks(prev => !prev)}>
             {showBooks ? "Hide Books" : "View Books"}
           </button>
-          {/* we need to tie in this input with a search that will show what we are searching for */}
           <input
             type="text"
             placeholder="Search by title or author"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => {
+              setSearchQuery(e.target.value); 
+              handleSearch(e.target.value);
+            }}
           />
           {showBooks && (
             <div>
-              {books
-                .filter((book) =>
-                  book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                  book.author.toLowerCase().includes(searchQuery.toLowerCase())
-                )
-                .map(book => (
+              {books.map(book => (
                   <Book 
                     key={book.id} 
                     book={book} 
@@ -72,7 +85,6 @@ function App() {
             </div>
           )}
         </div>
-        
       </main>
     </div>
   );
