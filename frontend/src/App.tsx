@@ -25,7 +25,10 @@ function App() {
     }
     
     try {
-      const response = await axios.get(`/api/books/search?query=${encodeURIComponent(searchQuery)}`);
+      // const response = await axios.get(`/api/books/search?query=${encodeURIComponent(searchQuery)}`);
+      const response = await axios.get(`/api/books/search`, {
+        params: { query: searchQuery }
+      });
       setBooks(response.data);
     } 
     catch (error) {
@@ -73,7 +76,7 @@ function App() {
             }}
           />
           {showBooks && (
-            <div>
+            <div className="bookList">
               {books.map(book => (
                   <Book 
                     key={book.id} 

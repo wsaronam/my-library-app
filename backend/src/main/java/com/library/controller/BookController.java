@@ -35,7 +35,7 @@ public class BookController {
 
     @GetMapping("/search")
     public List<Book> searchBooks(@RequestParam("query") String query) {
-        return bookRepository.findByTitleOrAuthor(query, query);
+        return bookRepository.findByTitleOrAuthor(query);
     }
 
     @GetMapping

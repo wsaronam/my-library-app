@@ -1,7 +1,8 @@
-.card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 1rem;
-    margin: 1rem 0;
-    background-color: #4d0d44;
+.bookCard {
+  background-color: #e6b3b3;
+  border: 1px solid #da8484;
+  border-radius: 8px;
+  padding: 12px;
+  width: 200px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
   }

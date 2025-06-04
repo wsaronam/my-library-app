@@ -37,7 +37,7 @@ const Book: React.FC<BookProps> = ({ book, onBookUpdated, onDelete }) => {
     };
 
     return (
-        <div>
+        <div className={styles.bookCard}>
             {editing ? (
                 <div>
                     <input
@@ -56,7 +56,7 @@ const Book: React.FC<BookProps> = ({ book, onBookUpdated, onDelete }) => {
                     <button onClick={() => setEditing(false)}>Cancel</button>
                 </div>
             ) : (
-                <div className={styles.card}>
+                <div>
                     <h2>{book.title}</h2>
                     <p>Author: {book.author}</p>
                     <p>Description: {book.description}</p>
