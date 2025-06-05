@@ -14,7 +14,6 @@ function App() {
   // we will use searchQuery to search for the book with title or author
   const [searchQuery, setSearchQuery] = useState("");
   const [books, setBooks] = useState<BookType[]>([]);
-  const [showBooks, setShowBooks] = useState(false);
 
 
   const handleSearch = async (searchQuery: string) => {
@@ -25,7 +24,6 @@ function App() {
     }
     
     try {
-      // const response = await axios.get(`/api/books/search?query=${encodeURIComponent(searchQuery)}`);
       const response = await axios.get(`/api/books/search`, {
         params: { query: searchQuery }
       });
@@ -61,11 +59,11 @@ function App() {
       </header>
 
       <main className="App-main">
-        <AddBook onBookAdded={(book) => setBooks(prev => [...prev, book])} />
-        <div>
-          <button onClick={() => setShowBooks(prev => !prev)}>
-            {showBooks ? "Hide Books" : "View Books"}
-          </button>
+        <div className="left-panel">
+          <AddBook onBookAdded={(book) => setBooks(prev => [...prev, book])} />
+        </div>  
+
+        <div className="right-panel">
           <input
             type="text"
             placeholder="Search by title or author"
@@ -75,18 +73,16 @@ function App() {
               handleSearch(e.target.value);
             }}
           />
-          {showBooks && (
-            <div className="bookList">
-              {books.map(book => (
-                  <Book 
-                    key={book.id} 
-                    book={book} 
-                    onBookUpdated={handleBookUpdated} 
-                    onDelete={handleDeleteBook} 
-                  />
-              ))}
-            </div>
-          )}
+          <div className="bookList">
+            {books.map(book => (
+                <Book 
+                  key={book.id} 
+                  book={book} 
+                  onBookUpdated={handleBookUpdated} 
+                  onDelete={handleDeleteBook} 
+                />
+            ))}
+          </div>
         </div>
       </main>
     </div>

@@ -42,6 +42,28 @@
 
 .App-main {
   background-color: #282c34;
+  display: flex;
+  height: 100vh;
+  padding: 20px;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.left-panel {
+  flex: 1;
+  max-width: 50%;
+  padding: 20px;
+  background-color: #0f5677;
+  border-radius: 10px;
+}
+
+.right-panel {
+  flex: 1;
+  max-width: 50%;
+  padding: 20px;
+  background-color: #223b8d;
+  border-radius: 10px;
+  overflow-y: auto;
 }
 
 
