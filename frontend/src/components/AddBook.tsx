@@ -4,6 +4,8 @@ import axios from "axios";
 
 import { BookType } from "../types/Book";
 
+import styles from '../styles/AddBook.module.css';
+
 
 
 interface AddBookProps {
@@ -36,12 +38,12 @@ const AddBook: React.FC<AddBookProps> = ({onBookAdded}) => {
 
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" required />
-                <input value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Author" required />
-                <input value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
-                <button type="submit">Add Book</button>
+        <div className={styles.formContainer}>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" required className={styles.input} />
+                <input value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Author" required className={styles.input} />
+                <input value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" className={styles.input} />
+                <button type="submit" className={styles.button}>Add Book</button>
             </form>
         </div>
     )

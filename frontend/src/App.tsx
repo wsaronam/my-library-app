@@ -72,6 +72,7 @@ function App() {
               setSearchQuery(e.target.value); 
               handleSearch(e.target.value);
             }}
+            className="search-input"
           />
           <div className="bookList">
             {books.map(book => (
