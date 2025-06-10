@@ -4,6 +4,8 @@ import './App.css';
 
 import axios from "axios";
 
+import libraryLogo from './library_logo.png';
+
 import Book from "./components/Book"
 import { BookType } from "./types/Book";
 import AddBook from "./components/AddBook";
@@ -53,13 +55,12 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>My Library App</p>
-      </header>
-
       <main className="App-main">
         <div className="left-panel">
+          <div className="left-panel-header">
+            <h1>My Library App</h1>
+            <img src={libraryLogo} alt="My Library App logo" />
+          </div>
           <AddBook onBookAdded={(book) => setBooks(prev => [...prev, book])} />
         </div>  
 

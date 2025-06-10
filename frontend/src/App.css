@@ -57,6 +57,24 @@
   border-radius: 10px;
 }
 
+.left-panel h1 {
+  font-size: 2rem;
+  color: #bdcdce;
+  margin: 0;
+}
+
+.left-panel img {
+  width: 120px;
+  height: auto;
+  border-radius: 12px;
+}
+
+.left-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .right-panel {
   flex: 1;
   max-width: 50%;
