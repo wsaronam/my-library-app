@@ -84,6 +84,12 @@
   overflow-y: auto;
 }
 
+.right-panel h1 {
+  font-size: 2rem;
+  color: #bdcdce;
+  margin: 0;
+}
+
 
 
 .search-input {

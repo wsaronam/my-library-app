@@ -39,29 +39,37 @@ const Book: React.FC<BookProps> = ({ book, onBookUpdated, onDelete }) => {
     return (
         <div className={styles.bookCard}>
             {editing ? (
-                <div>
+                <div className={styles.editForm}>
                     <input
                         value={editedBook.title}
                         onChange={(e) => setEditedBook({ ...editedBook, title: e.target.value })}
+                        className={styles.editInput}
                     />
                     <input
                         value={editedBook.author}
                         onChange={(e) => setEditedBook({ ...editedBook, author: e.target.value })}
+                        className={styles.editInput}
                     />
-                    <input
+                    <textarea
                         value={editedBook.description}
                         onChange={(e) => setEditedBook({ ...editedBook, description: e.target.value })}
+                        className={styles.editTextarea}
                     />
-                    <button onClick={handleUpdate}>Save</button>
-                    <button onClick={() => setEditing(false)}>Cancel</button>
+                    <div className={styles.editFormButtons}>
+                        <button onClick={handleUpdate} className={styles.saveButton}>Save</button>
+                        <button onClick={() => setEditing(false)} className={styles.cancelButton}>Cancel</button>
+                    </div>
+                    
                 </div>
             ) : (
                 <div>
                     <h2>{book.title}</h2>
-                    <p>Author: {book.author}</p>
-                    <p>Description: {book.description}</p>
-                    <button onClick={() => setEditing(true)}>Edit</button>
-                    <button onClick={handleDelete}>Delete</button>
+                    <p><strong>Author:</strong><br /> {book.author}</p>
+                    <p><strong>Description:</strong><br /> {book.description}</p>
+                    <div className={styles.bookButtons}>
+                        <button onClick={handleDelete} className={styles.deleteButton}>Delete</button>
+                        <button onClick={() => setEditing(true)} className={styles.editButton}>Edit</button>
+                    </div>
                 </div>
             )}
         </div>

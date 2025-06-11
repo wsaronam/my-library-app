@@ -65,6 +65,7 @@ function App() {
         </div>  
 
         <div className="right-panel">
+          <h1>Books in Library</h1>
           <input
             type="text"
             placeholder="Search by title or author"
