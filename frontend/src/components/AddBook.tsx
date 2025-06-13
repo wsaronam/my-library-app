@@ -42,7 +42,7 @@ const AddBook: React.FC<AddBookProps> = ({onBookAdded}) => {
             <form onSubmit={handleSubmit} className={styles.form}>
                 <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" required className={styles.input} />
                 <input value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Author" required className={styles.input} />
-                <input value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" className={styles.input} />
+                <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" className={styles.inputDesc} />
                 <button type="submit" className={styles.button}>Add Book</button>
             </form>
         </div>

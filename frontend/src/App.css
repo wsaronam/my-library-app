@@ -55,6 +55,11 @@
   padding: 20px;
   background-color: #0f5677;
   border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .left-panel h1 {
