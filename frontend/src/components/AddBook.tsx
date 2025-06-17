@@ -40,9 +40,9 @@ const AddBook: React.FC<AddBookProps> = ({onBookAdded}) => {
     return (
         <div className={styles.formContainer}>
             <form onSubmit={handleSubmit} className={styles.form}>
-                <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" required className={styles.input} />
-                <input value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Author" required className={styles.input} />
-                <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" className={styles.inputDesc} />
+                <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" required maxLength={100} className={styles.input} />
+                <input value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Author" required maxLength={100} className={styles.input} />
+                <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" maxLength={1000} className={styles.inputDesc} />
                 <button type="submit" className={styles.button}>Add Book</button>
             </form>
         </div>

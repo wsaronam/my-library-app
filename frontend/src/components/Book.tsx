@@ -43,16 +43,19 @@ const Book: React.FC<BookProps> = ({ book, onBookUpdated, onDelete }) => {
                     <input
                         value={editedBook.title}
                         onChange={(e) => setEditedBook({ ...editedBook, title: e.target.value })}
+                        maxLength={100}
                         className={styles.editInput}
                     />
                     <input
                         value={editedBook.author}
                         onChange={(e) => setEditedBook({ ...editedBook, author: e.target.value })}
+                        maxLength={100}
                         className={styles.editInput}
                     />
                     <textarea
                         value={editedBook.description}
                         onChange={(e) => setEditedBook({ ...editedBook, description: e.target.value })}
+                        maxLength={1000}
                         className={styles.editTextarea}
                     />
                     <div className={styles.editFormButtons}>

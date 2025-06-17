@@ -1,5 +1,7 @@
 package com.library.model;
 
+import jakarta.validation.constraints.Size;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -15,8 +17,16 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Size(max = 100)
+    @Column(length = 100)
     private String title;
+
+    @Size(max = 100)
+    @Column(length = 100)
     private String author;
+
+    @Size(max = 1000)
+    @Column(length = 1000)
     private String description;
 
 
