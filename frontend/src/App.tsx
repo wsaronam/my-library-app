@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import axios from "axios";
@@ -9,7 +8,6 @@ import libraryLogo from './library_logo.png';
 import Book from "./components/Book"
 import { BookType } from "./types/Book";
 import AddBook from "./components/AddBook";
-import ViewBooks from "./components/ViewBooks";
 
 
 function App() {
@@ -76,6 +74,15 @@ function App() {
             }}
             className="search-input"
           />
+          <button
+            onClick={() => {
+              setSearchQuery("");
+              handleSearch("");
+            }}
+            className="clear-button"
+          >
+            Clear Search
+          </button>
           <div className="bookList">
             {books.map(book => (
                 <Book 
